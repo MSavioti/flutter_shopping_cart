@@ -94,7 +94,11 @@ class _CartPageState extends State<CartPage> {
                                               horizontal: 8.0,
                                             ),
                                             child: Text(
-                                                '${cartItems[i].quantity}'),
+                                              '${cartItems[i].quantity}',
+                                              style: const TextStyle(
+                                                fontSize: 18.0,
+                                              ),
+                                            ),
                                           ),
                                           DecoratedBox(
                                             decoration: BoxDecoration(
@@ -176,6 +180,11 @@ class _CartPageState extends State<CartPage> {
                               ],
                             ),
                             ElevatedButton(
+                              style: ButtonStyle(
+                                minimumSize: MaterialStateProperty.all(
+                                  const Size(192.0, 48.0),
+                                ),
+                              ),
                               onPressed: () {},
                               child: const Text(
                                 'CHECKOUT',
