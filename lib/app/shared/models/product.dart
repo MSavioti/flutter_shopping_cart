@@ -12,4 +12,12 @@ class Product {
     required this.image,
     required this.price,
   });
+
+  @override
+  bool operator ==(Object other) {
+    return other is Product && other.id == id;
+  }
+
+  @override
+  int get hashCode => id.hashCode;
 }
