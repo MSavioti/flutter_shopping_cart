@@ -13,6 +13,7 @@ class CartController {
   List<CartItem> get cartItems => _cartItems;
   int get itemsCount => _cartItems.length;
   double cartTotalPrice = 0.0;
+  bool get hasItems => _cartItems.isNotEmpty;
 
   void addItem(Product product, int quantity) {
     final cartItem = CartItem(product: product, quantity: quantity);

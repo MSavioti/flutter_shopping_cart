@@ -130,7 +130,8 @@ class _CartPageState extends State<CartPage> {
                                     },
                                   ),
                                 ),
-                              SizedBox(height: checkoutOverlayHeight),
+                              if (CartController.instance.hasItems)
+                                SizedBox(height: checkoutOverlayHeight),
                             ],
                           ),
                         ),
