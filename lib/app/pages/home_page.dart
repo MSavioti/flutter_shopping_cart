@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               itemCount: _products.length,
               itemBuilder: (context, i) {
-                final String _price = _products[i].price.toStringAsPrecision(3);
+                final String _price = _products[i].price.toStringAsPrecision(1);
 
                 return Card(
                   child: ListTile(

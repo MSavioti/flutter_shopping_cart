@@ -34,7 +34,7 @@ class ProductPage extends StatelessWidget {
                     children: [
                       Text(_product.name),
                       Text(
-                        '\$ ${_product.price.toStringAsPrecision(3)}',
+                        '\$ ${_product.price.toStringAsPrecision(1)}',
                         style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 24.0,

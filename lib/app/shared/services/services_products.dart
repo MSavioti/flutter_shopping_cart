@@ -18,7 +18,7 @@ class ServiceProducts {
         sku: '${i + 1}',
         name: 'Product ${i + 1}',
         image: 'https://picsum.photos/100?random=${i + 1}',
-        price: i + 1.0,
+        price: 0.01,
       );
       _products.add(_product);
     }
