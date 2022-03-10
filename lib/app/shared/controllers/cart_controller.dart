@@ -12,6 +12,7 @@ class CartController {
   List<CartItem> _cartItems = [];
   List<CartItem> get cartItems => _cartItems;
   int get itemsCount => _cartItems.length;
+  double cartTotalPrice = 0.0;
 
   void addItem(Product product, int quantity) {
     final cartItem = CartItem(product: product, quantity: quantity);
@@ -21,6 +22,7 @@ class CartController {
     }
 
     _cartItems.add(cartItem);
+    _updateCartTotalPrice();
   }
 
   void increaseQuantity(CartItem cartItem) {
@@ -36,6 +38,7 @@ class CartController {
 
     final index = _cartItems.indexOf(cartItem);
     _cartItems = _cartItems.updateItem(index, updatedItem);
+    _updateCartTotalPrice();
   }
 
   void decreaseQuantity(CartItem cartItem) {
@@ -57,6 +60,7 @@ class CartController {
 
     final index = _cartItems.indexOf(cartItem);
     _cartItems = _cartItems.updateItem(index, updatedItem);
+    _updateCartTotalPrice();
   }
 
   void removeItem(CartItem cartItem) {
@@ -65,9 +69,19 @@ class CartController {
     }
 
     _cartItems.remove(cartItem);
+    _updateCartTotalPrice();
   }
 
   void clear() {
     _cartItems.clear();
+    _updateCartTotalPrice();
+  }
+
+  void _updateCartTotalPrice() {
+    cartTotalPrice = 0.0;
+
+    for (var item in cartItems) {
+      cartTotalPrice += item.price;
+    }
   }
 }

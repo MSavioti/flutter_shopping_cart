@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping_cart/app/shared/controllers/cart_controller.dart';
 import 'package:flutter_shopping_cart/app/shared/models/product.dart';
 import 'package:flutter_shopping_cart/app/shared/widgets/button_shopping_cart.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({Key? key}) : super(key: key);
 
+  void _addToCart(Product product) {
+    CartController.instance.addItem(product, 1);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final _product = ModalRoute.of(context)?.settings.arguments as Product;
+    final product = ModalRoute.of(context)?.settings.arguments as Product;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_product.name),
+        title: Text(product.name),
         actions: const [
           ButtonShoppingCart(),
         ],
@@ -26,15 +31,15 @@ class ProductPage extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.network(_product.image),
+                  Image.network(product.image),
                   const SizedBox(width: 24.0),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(_product.name),
+                      Text(product.name),
                       Text(
-                        '\$ ${_product.price.toStringAsPrecision(1)}',
+                        '\$ ${product.price.toStringAsPrecision(1)}',
                         style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 24.0,
@@ -49,7 +54,14 @@ class ProductPage extends StatelessWidget {
               width: 192.0,
               height: 48.0,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _addToCart(product);
+                  const snackBar = SnackBar(
+                    content: Text('Item added to the cart!'),
+                    duration: Duration(seconds: 1),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
                 child: const Text(
                   'BUY',
                   style: TextStyle(fontSize: 16.0),
