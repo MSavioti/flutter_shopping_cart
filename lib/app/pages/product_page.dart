@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_cart/app/shared/models/product.dart';
+import 'package:flutter_shopping_cart/app/shared/widgets/button_shopping_cart.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -11,6 +12,9 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(_product.name),
+        actions: const [
+          ButtonShoppingCart(),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_cart/app/shared/models/product.dart';
 import 'package:flutter_shopping_cart/app/shared/services/services_products.dart';
+import 'package:flutter_shopping_cart/app/shared/widgets/button_shopping_cart.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,7 +30,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+        title: const Text('Home'),
+        actions: const [
+          ButtonShoppingCart(),
+        ],
+      ),
       body: _products.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
